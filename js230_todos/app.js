@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     item.appendChild(button);
     list.appendChild(item);
   })
+
+  list.addEventListener('click', event => {
+    if(event.target.tagName === 'SPAN') {
+      alert('remove this todo?');
+    }
+  })
 //   Create a list of todos in the DOM from a JavaScript collection (array) of todos.
 //
 //   Each Todo has an id, name, and a red x
