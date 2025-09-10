@@ -6,6 +6,15 @@ let todoItems = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+  let list = document.querySelector('ul');
+
+  todoItems.forEach(todo => {
+    let item = document.createElement('li');
+    item.textContent = todo.title;
+    item.dataset.id = todo.id;
+
+    list.appendChild(item);
+  })
 //   Create a list of todos in the DOM from a JavaScript collection (array) of todos.
 //
 //   Each Todo has an id, name, and a red x
