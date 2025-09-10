@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     item.textContent = todo.title;
     item.dataset.id = todo.id;
 
+    let button = document.createElement('span');
+    button.classList.add('remove');
+
+    item.appendChild(button);
     list.appendChild(item);
   })
 //   Create a list of todos in the DOM from a JavaScript collection (array) of todos.
