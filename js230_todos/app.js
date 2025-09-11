@@ -23,6 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
   list.addEventListener('click', event => {
     if(event.target.tagName === 'SPAN') {
       const prompt = document.querySelector('.confirm_prompt');
+
+      let yes = document.createElement('a');
+      yes.classList.add('confirm_yes');
+      yes.textContent = 'Yes';
+      yes.setAttribute('href', '#');
+
+      let no = document.createElement('a');
+      no.classList.add('confirm_no');
+      no.textContent = 'No';
+      no.setAttribute('href', '#');
+
+      prompt.appendChild(yes);
+      prompt.appendChild(no);
       prompt.classList.add('show');
     }
   })
