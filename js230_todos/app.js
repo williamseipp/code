@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   list.addEventListener('click', event => {
     if(event.target.tagName === 'SPAN') {
-      alert('remove this todo?');
+      const prompt = document.querySelector('.confirm_prompt');
+      prompt.classList.add('show');
     }
   })
 //   Create a list of todos in the DOM from a JavaScript collection (array) of todos.
