@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if(event.target.tagName === 'SPAN') {
       const prompt = document.querySelector('.confirm_prompt');
 
+      let todoId = event.target.parentNode.dataset.id;
+      let title = document.createElement('p');
+      let todo = todoItems.find(todo => todo.id === Number(todoId));
+      title.textContent = todo.title;
+
       let yes = document.createElement('a');
       yes.classList.add('confirm_yes');
       yes.textContent = 'Yes';
@@ -34,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       no.textContent = 'No';
       no.setAttribute('href', '#');
 
+      prompt.appendChild(title);
       prompt.appendChild(yes);
       prompt.appendChild(no);
       prompt.classList.add('show');
