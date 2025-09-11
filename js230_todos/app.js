@@ -7,6 +7,7 @@ let todoItems = [
 
 document.addEventListener('DOMContentLoaded', () => {
   let list = document.querySelector('ul');
+  const prompt = document.querySelector('.confirm_prompt');
 
   todoItems.forEach(todo => {
     let item = document.createElement('li');
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   list.addEventListener('click', event => {
     if(event.target.tagName === 'SPAN') {
-      const prompt = document.querySelector('.confirm_prompt');
 
       let todoId = event.target.parentNode.dataset.id;
       let title = document.createElement('p');
@@ -43,6 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
       prompt.appendChild(yes);
       prompt.appendChild(no);
       prompt.classList.add('show');
+    }
+  })
+
+  prompt.addEventListener('click', event => {
+    if(event.target.classList.contains('confirm_yes')) {
+      prompt.classList.remove('show');
     }
   })
 //   Create a list of todos in the DOM from a JavaScript collection (array) of todos.
