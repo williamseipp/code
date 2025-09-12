@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   prompt.addEventListener('click', event => {
     if(event.target.classList.contains('confirm_yes')) {
       prompt.classList.remove('show');
+      prompt.replaceChildren();
     }
   })
 //   Create a list of todos in the DOM from a JavaScript collection (array) of todos.
