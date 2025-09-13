@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
       let todo = todoItems.find(todo => todo.id === Number(todoId));
       title.textContent = todo.title;
 
+      let text = document.createElement('p');
+      text.textContent = `Are you sure you want to delete "${title.textContent}"?`
+
       let yes = document.createElement('a');
       yes.classList.add('confirm_yes');
       yes.textContent = 'Yes';
@@ -39,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       no.textContent = 'No';
       no.setAttribute('href', '#');
 
-      prompt.appendChild(title);
+      prompt.appendChild(text);
       prompt.appendChild(yes);
       prompt.appendChild(no);
       prompt.dataset.id = todoId;
