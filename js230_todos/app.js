@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prompt.appendChild(title);
       prompt.appendChild(yes);
       prompt.appendChild(no);
+      prompt.dataset.id = todoId;
       prompt.classList.add('show');
     }
   })
@@ -49,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
   prompt.addEventListener('click', event => {
     if(event.target.classList.contains('confirm_yes')) {
       prompt.classList.remove('show');
+      let id = prompt.dataset.id;
+      let todo = list.querySelector(`li[data-id="${id}"]`);
+      list.removeChild(todo);
       prompt.replaceChildren();
     }
   })
