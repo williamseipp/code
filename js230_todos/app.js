@@ -58,5 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
       list.removeChild(todo);
       prompt.replaceChildren();
     }
+    if(event.target.classList.contains('confirm_no')) {
+      prompt.classList.remove('show');
+      prompt.replaceChildren();
+    }
   })
 })
