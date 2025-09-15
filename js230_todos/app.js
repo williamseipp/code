@@ -6,14 +6,6 @@ let todoItems = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  let outsideClickHandler = function(event) {
-    if (prompt.classList.contains('show') && !prompt.contains(event.target)) {
-      prompt.classList.remove('show');
-      prompt.replaceChildren();
-      document.removeEventListener('click', outsideClickHandler);
-    }
-  };
-
   let list = document.querySelector('ul');
   const prompt = document.querySelector('.confirm_prompt');
 
@@ -29,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     list.appendChild(item);
   })
 
-  list.addEventListener('click', event => {
+  document.addEventListener('click', event => {
     if(event.target.tagName === 'SPAN') {
       let todoId = event.target.parentNode.dataset.id;
       let title = document.createElement('p');
@@ -54,25 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
       prompt.appendChild(no);
       prompt.dataset.id = todoId;
       prompt.classList.add('show');
-
-      setTimeout(() => {
-        document.addEventListener('click', outsideClickHandler);
-      }, 0);
+      return;
     }
-  });
-
-  prompt.addEventListener('click', event => {
-    if(event.target.classList.contains('confirm_yes')) {
-      prompt.classList.remove('show');
+    else if(event.target.classList.contains('confirm_yes')) {
       let id = prompt.dataset.id;
       let todo = list.querySelector(`li[data-id="${id}"]`);
       list.removeChild(todo);
-      prompt.replaceChildren();
-    }
-    if(event.target.classList.contains('confirm_no')) {
       prompt.classList.remove('show');
       prompt.replaceChildren();
-      document.removeEventListener('click', outsideClickHandler);
     }
-  })
+    else if(event.target.classList.contains('confirm_no') || !prompt.contains(event.target)) {
+      prompt.classList.remove('show');
+      prompt.replaceChildren();
+    }
+  });
 })
