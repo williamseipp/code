@@ -8,6 +8,7 @@ let todoItems = [
 document.addEventListener('DOMContentLoaded', () => {
   let list = document.querySelector('ul');
   const prompt = document.querySelector('.confirm_prompt');
+  let overlay = document.querySelector('.overlay');
 
   todoItems.forEach(todo => {
     let item = document.createElement('li');
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prompt.appendChild(no);
       prompt.dataset.id = todoId;
       prompt.classList.add('show');
+      overlay.classList.add('show');
       return;
     }
     else if(event.target.classList.contains('confirm_yes')) {
@@ -54,10 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
       list.removeChild(todo);
       prompt.classList.remove('show');
       prompt.replaceChildren();
+      overlay.classList.remove('show');
     }
     else if(event.target.classList.contains('confirm_no') || !prompt.contains(event.target)) {
       prompt.classList.remove('show');
       prompt.replaceChildren();
+      overlay.classList.remove('show');
     }
   });
 })
