@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   document.addEventListener('click', event => {
-    // if(event.target.tagName === 'SPAN') {
     if(event.target.classList.contains('remove')) {
       let todoId = event.target.parentNode.dataset.id;
       let title = document.createElement('p');
