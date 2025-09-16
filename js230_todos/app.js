@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', event => {
     if(event.target.classList.contains('remove')) {
-      let todoId = event.target.parentNode.dataset.id;
+      let todoId = event.target.closest('li').dataset.id;
       let title = document.createElement('p');
       let todo = todoItems.find(todo => todo.id === Number(todoId));
       title.textContent = todo.title;
