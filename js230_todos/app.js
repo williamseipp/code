@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       no.textContent = 'No';
       no.setAttribute('href', '#');
 
+      prompt.replaceChildren();
       prompt.appendChild(text);
       prompt.appendChild(yes);
       prompt.appendChild(no);
@@ -55,12 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let todo = list.querySelector(`li[data-id="${id}"]`);
       list.removeChild(todo);
       prompt.classList.remove('show');
-      prompt.replaceChildren();
       overlay.classList.remove('show');
     }
     else if(event.target.classList.contains('confirm_no') || event.target === overlay) {
       prompt.classList.remove('show');
-      prompt.replaceChildren();
       overlay.classList.remove('show');
     }
   });
