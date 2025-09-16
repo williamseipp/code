@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prompt.replaceChildren();
       overlay.classList.remove('show');
     }
-    else if(event.target.classList.contains('confirm_no') || !prompt.contains(event.target)) {
+    else if(event.target.classList.contains('confirm_no') || event.target === overlay) {
       prompt.classList.remove('show');
       prompt.replaceChildren();
       overlay.classList.remove('show');
