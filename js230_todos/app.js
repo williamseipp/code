@@ -64,3 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 })
+
+class App {
+  constructor(todos) {
+    this.todos = todos;
+    this.todosDiv = document.querySelector('.todos');
+    this.promptDiv = document.querySelector('.confirm_prompt');
+    this.overlayDiv = document.querySelector('.overlay');
+  }
+}
+
+new App(todoItems);
