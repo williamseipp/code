@@ -68,6 +68,13 @@ class App {
         this.overlayDiv.classList.remove('show');
       }
     });
+
+    this.overlayDiv.addEventListener('click', event => {
+      if(event.target.classList.contains('overlay')) {
+        this.promptDiv.classList.remove('show');
+        this.overlayDiv.classList.remove('show');
+      }
+    });
   }
 }
 
