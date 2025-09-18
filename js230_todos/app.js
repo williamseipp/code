@@ -16,9 +16,9 @@ class App {
 
     this.todosDiv.addEventListener('click', event => {
       if(event.target.classList.contains('remove')) {
-        let todoId = event.target.closest('li').dataset.id;
+        let todoId = Number(event.target.closest('li').dataset.id);
         let title = document.createElement('p');
-        let todo = todoItems.find(todo => todo.id === Number(todoId));
+        let todo = todoItems.find(todo => todo.id === todoId);
         title.textContent = todo.title;
 
         let text = document.createElement('p');
