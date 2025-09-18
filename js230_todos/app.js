@@ -15,6 +15,7 @@ class App {
     this.renderTodos();
 
     this.todosDiv.addEventListener('click', this.handleDeleteClick.bind(this));
+    this.todosDiv.addEventListener('contextmenu', this.handleRightClick.bind(this));
     this.promptDiv.addEventListener('click', this.handleConfirmClick.bind(this));
     this.overlayDiv.addEventListener('click', this.handleOverlayClick.bind(this));
   }
@@ -41,6 +42,11 @@ class App {
     let todoId = Number(event.target.closest('li').dataset.id);
     let todo = todoItems.find(todo => todo.id === todoId);
     this.showPrompt(todo);
+  }
+
+  handleRightClick(event) {
+    event.preventDefault();
+    alert('context menu');
   }
 
   handleConfirmClick(event) {
