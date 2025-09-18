@@ -27,10 +27,9 @@ class App {
       let button = event.target;
       if(!button.classList.contains('confirm_yes') && !button.classList.contains('confirm_no')) return;
 
-      // needed for deleting actual todo instead of just rendering
       let todoId = Number(button.closest('.confirm_wrapper').dataset.id);
       if(button.classList.contains('confirm_yes')) {
-        this.todosDiv.removeChild(todo);
+        this.deleteTodo(todoId);
       }
 
       this.hidePrompt()
@@ -40,6 +39,11 @@ class App {
       if(!event.target.classList.contains('overlay')) return;
       this.hidePrompt();
     });
+  }
+
+  deleteTodo(id) {
+    this.todos = this.todos.filter(todo => todo.id !== id);
+    this.renderTodos();
   }
 
   confirmTemplate(todo) {
