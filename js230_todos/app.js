@@ -71,10 +71,9 @@ class App {
     });
 
     this.overlayDiv.addEventListener('click', event => {
-      if(event.target.classList.contains('overlay')) {
+      if(!event.target.classList.contains('overlay')) return;
         this.promptDiv.classList.remove('show');
         this.overlayDiv.classList.remove('show');
-      }
     });
   }
 }
