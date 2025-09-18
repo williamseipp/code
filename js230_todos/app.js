@@ -56,11 +56,11 @@ class App {
     });
 
     this.promptDiv.addEventListener('click', event => {
-      if(!event.target.classList.contains('confirm_yes') && !event.target.classList.contains('confirm_no')) {
-        return;
-      }
+      event.preventDefault();
+      let button = event.target;
+      if(!button.classList.contains('confirm_yes') && !button.classList.contains('confirm_no')) return;
 
-      if(event.target.classList.contains('confirm_yes')) {
+      if(button.classList.contains('confirm_yes')) {
         let id = this.promptDiv.dataset.id;
         let todo = this.todosDiv.querySelector(`li[data-id="${id}"]`);
         this.todosDiv.removeChild(todo);
