@@ -50,7 +50,7 @@ class App {
         this.promptDiv.appendChild(no);
         this.promptDiv.dataset.id = todoId;
         this.promptDiv.classList.add('show');
-        overlay.classList.add('show');
+        this.overlayDiv.classList.add('show');
         return;
       }
     });
@@ -61,7 +61,7 @@ class App {
         let todo = list.querySelector(`li[data-id="${id}"]`);
         list.removeChild(todo);
         this.promptDiv.classList.remove('show');
-        this.overlay.classList.remove('show');
+        this.overlayDiv.classList.remove('show');
       }
       if(event.target.classList.contains('confirm_no')) {
         this.promptDiv.classList.remove('show');
