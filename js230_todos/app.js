@@ -58,8 +58,8 @@ class App {
     this.promptDiv.addEventListener('click', event => {
       if(event.target.classList.contains('confirm_yes')) {
         let id = this.promptDiv.dataset.id;
-        let todo = list.querySelector(`li[data-id="${id}"]`);
-        list.removeChild(todo);
+        let todo = this.todosDiv.querySelector(`li[data-id="${id}"]`);
+        this.todosDiv.removeChild(todo);
         this.promptDiv.classList.remove('show');
         this.overlayDiv.classList.remove('show');
       }
