@@ -12,17 +12,7 @@ class App {
     this.promptDiv = document.querySelector('.confirm_prompt');
     this.overlayDiv = document.querySelector('.overlay');
 
-    this.todos.forEach(todo => {
-      let item = document.createElement('li');
-      item.textContent = todo.title;
-      item.dataset.id = todo.id;
-
-      let button = document.createElement('span');
-      button.classList.add('remove');
-
-      item.appendChild(button);
-      this.todosDiv.appendChild(item);
-    })
+    this.renderTodos();
 
     this.todosDiv.addEventListener('click', event => {
       if(event.target.classList.contains('remove')) {
@@ -79,6 +69,16 @@ class App {
     this.promptDiv.innerHTML = '';
     this.promptDiv.classList.remove('show');
     this.overlayDiv.classList.remove('show');
+  }
+
+  renderTodos() {
+    this.todosDiv.innerHTML = this.todosTemplate();
+  }
+
+  todosTemplate() {
+    return this.todos
+      .map(todo => `<li data-id="${todo.id}">${todo.title} <span class="remove"></span></li>`)
+      .join('');
   }
 }
 
