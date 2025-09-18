@@ -66,15 +66,19 @@ class App {
         this.todosDiv.removeChild(todo);
       }
 
-      this.promptDiv.classList.remove('show');
-      this.overlayDiv.classList.remove('show');
+      this.hidePrompt()
     });
 
     this.overlayDiv.addEventListener('click', event => {
       if(!event.target.classList.contains('overlay')) return;
-        this.promptDiv.classList.remove('show');
-        this.overlayDiv.classList.remove('show');
+      this.hidePrompt();
     });
+  }
+
+  hidePrompt() {
+    this.promptDiv.innerHTML = '';
+    this.promptDiv.classList.remove('show');
+    this.overlayDiv.classList.remove('show');
   }
 }
 
