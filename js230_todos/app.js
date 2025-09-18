@@ -56,17 +56,18 @@ class App {
     });
 
     this.promptDiv.addEventListener('click', event => {
+      if(!event.target.classList.contains('confirm_yes') && !event.target.classList.contains('confirm_no')) {
+        return;
+      }
+
       if(event.target.classList.contains('confirm_yes')) {
         let id = this.promptDiv.dataset.id;
         let todo = this.todosDiv.querySelector(`li[data-id="${id}"]`);
         this.todosDiv.removeChild(todo);
-        this.promptDiv.classList.remove('show');
-        this.overlayDiv.classList.remove('show');
       }
-      if(event.target.classList.contains('confirm_no')) {
-        this.promptDiv.classList.remove('show');
-        this.overlayDiv.classList.remove('show');
-      }
+
+      this.promptDiv.classList.remove('show');
+      this.overlayDiv.classList.remove('show');
     });
 
     this.overlayDiv.addEventListener('click', event => {
