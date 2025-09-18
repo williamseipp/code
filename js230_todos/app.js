@@ -6,22 +6,6 @@ let todoItems = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  let list = document.querySelector('ul');
-  const prompt = document.querySelector('.confirm_prompt');
-  let overlay = document.querySelector('.overlay');
-
-  todoItems.forEach(todo => {
-    let item = document.createElement('li');
-    item.textContent = todo.title;
-    item.dataset.id = todo.id;
-
-    let button = document.createElement('span');
-    button.classList.add('remove');
-
-    item.appendChild(button);
-    list.appendChild(item);
-  })
-
   document.addEventListener('click', event => {
     if(event.target.classList.contains('remove')) {
       let todoId = event.target.closest('li').dataset.id;
@@ -71,6 +55,18 @@ class App {
     this.todosDiv = document.querySelector('.todos');
     this.promptDiv = document.querySelector('.confirm_prompt');
     this.overlayDiv = document.querySelector('.overlay');
+
+    this.todos.forEach(todo => {
+      let item = document.createElement('li');
+      item.textContent = todo.title;
+      item.dataset.id = todo.id;
+
+      let button = document.createElement('span');
+      button.classList.add('remove');
+
+      item.appendChild(button);
+      this.todosDiv.appendChild(item);
+    })
   }
 }
 
