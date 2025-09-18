@@ -14,31 +14,9 @@ class App {
 
     this.renderTodos();
 
-    this.todosDiv.addEventListener('click', event => {
-      if(event.target.classList.contains('remove')) {
-        let todoId = Number(event.target.closest('li').dataset.id);
-        let todo = todoItems.find(todo => todo.id === todoId);
-        this.showPrompt(todo);
-      }
-    });
-
-    this.promptDiv.addEventListener('click', event => {
-      event.preventDefault();
-      let button = event.target;
-      if(!button.classList.contains('confirm_yes') && !button.classList.contains('confirm_no')) return;
-
-      let todoId = Number(button.closest('.confirm_wrapper').dataset.id);
-      if(button.classList.contains('confirm_yes')) {
-        this.deleteTodo(todoId);
-      }
-
-      this.hidePrompt()
-    });
-
-    this.overlayDiv.addEventListener('click', event => {
-      if(!event.target.classList.contains('overlay')) return;
-      this.hidePrompt();
-    });
+    this.todosDiv.addEventListener('click', this.handleDeleteClick.bind(this));
+    this.promptDiv.addEventListener('click', this.handleConfirmClick.bind(this));
+    this.overlayDiv.addEventListener('click', this.handleOverlayClick.bind(this));
   }
 
   deleteTodo(id) {
@@ -56,6 +34,31 @@ class App {
         </div>
       </div>
     `;
+  }
+
+  handleDeleteClick(event) {
+    if(!event.target.classList.contains('remove')) return;
+    let todoId = Number(event.target.closest('li').dataset.id);
+    let todo = todoItems.find(todo => todo.id === todoId);
+    this.showPrompt(todo);
+  }
+
+  handleConfirmClick(event) {
+    event.preventDefault();
+    let button = event.target;
+    if(!button.classList.contains('confirm_yes') && !button.classList.contains('confirm_no')) return;
+
+    let todoId = Number(button.closest('.confirm_wrapper').dataset.id);
+    if(button.classList.contains('confirm_yes')) {
+      this.deleteTodo(todoId);
+    }
+
+    this.hidePrompt()
+  }
+
+  handleOverlayClick(event) {
+    if(!event.target.classList.contains('overlay')) return;
+    this.hidePrompt();
   }
 
   showPrompt(todo) {
