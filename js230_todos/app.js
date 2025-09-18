@@ -5,22 +5,6 @@ let todoItems = [
   {id: 4, title: 'Coffee with Elphaba'},
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('click', event => {
-    if(event.target.classList.contains('confirm_yes')) {
-      let id = prompt.dataset.id;
-      let todo = list.querySelector(`li[data-id="${id}"]`);
-      list.removeChild(todo);
-      prompt.classList.remove('show');
-      overlay.classList.remove('show');
-    }
-    else if(event.target.classList.contains('confirm_no') || event.target === overlay) {
-      prompt.classList.remove('show');
-      overlay.classList.remove('show');
-    }
-  });
-})
-
 class App {
   constructor(todos) {
     this.todos = todos;
@@ -68,6 +52,20 @@ class App {
         this.promptDiv.classList.add('show');
         overlay.classList.add('show');
         return;
+      }
+    });
+
+    this.promptDiv.addEventListener('click', event => {
+      if(event.target.classList.contains('confirm_yes')) {
+        let id = this.promptDiv.dataset.id;
+        let todo = list.querySelector(`li[data-id="${id}"]`);
+        list.removeChild(todo);
+        this.promptDiv.classList.remove('show');
+        this.overlay.classList.remove('show');
+      }
+      if(event.target.classList.contains('confirm_no')) {
+        this.promptDiv.classList.remove('show');
+        this.overlayDiv.classList.remove('show');
       }
     });
   }
