@@ -15,7 +15,7 @@ class App {
     this.renderTodos();
 
     this.todosDiv.addEventListener('click', this.handleDeleteClick.bind(this));
-    this.todosDiv.addEventListener('contextmenu', this.handleRightClick.bind(this));
+    this.contextmenuDiv.addEventListener('contextmenu', this.handleRightClick.bind(this));
     this.promptDiv.addEventListener('click', this.handleConfirmClick.bind(this));
     this.overlayDiv.addEventListener('click', this.handleOverlayClick.bind(this));
   }
