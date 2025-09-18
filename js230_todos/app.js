@@ -7,35 +7,7 @@ let todoItems = [
 
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', event => {
-    if(event.target.classList.contains('remove')) {
-      let todoId = event.target.closest('li').dataset.id;
-      let title = document.createElement('p');
-      let todo = todoItems.find(todo => todo.id === Number(todoId));
-      title.textContent = todo.title;
-
-      let text = document.createElement('p');
-      text.textContent = `Are you sure you want to delete "${title.textContent}"?`
-
-      let yes = document.createElement('a');
-      yes.classList.add('confirm_yes');
-      yes.textContent = 'Yes';
-      yes.setAttribute('href', '#');
-
-      let no = document.createElement('a');
-      no.classList.add('confirm_no');
-      no.textContent = 'No';
-      no.setAttribute('href', '#');
-
-      prompt.replaceChildren();
-      prompt.appendChild(text);
-      prompt.appendChild(yes);
-      prompt.appendChild(no);
-      prompt.dataset.id = todoId;
-      prompt.classList.add('show');
-      overlay.classList.add('show');
-      return;
-    }
-    else if(event.target.classList.contains('confirm_yes')) {
+    if(event.target.classList.contains('confirm_yes')) {
       let id = prompt.dataset.id;
       let todo = list.querySelector(`li[data-id="${id}"]`);
       list.removeChild(todo);
@@ -67,6 +39,37 @@ class App {
       item.appendChild(button);
       this.todosDiv.appendChild(item);
     })
+
+    this.todosDiv.addEventListener('click', event => {
+      if(event.target.classList.contains('remove')) {
+        let todoId = event.target.closest('li').dataset.id;
+        let title = document.createElement('p');
+        let todo = todoItems.find(todo => todo.id === Number(todoId));
+        title.textContent = todo.title;
+
+        let text = document.createElement('p');
+        text.textContent = `Are you sure you want to delete "${title.textContent}"?`
+
+        let yes = document.createElement('a');
+        yes.classList.add('confirm_yes');
+        yes.textContent = 'Yes';
+        yes.setAttribute('href', '#');
+
+        let no = document.createElement('a');
+        no.classList.add('confirm_no');
+        no.textContent = 'No';
+        no.setAttribute('href', '#');
+
+        this.promptDiv.replaceChildren();
+        this.promptDiv.appendChild(text);
+        this.promptDiv.appendChild(yes);
+        this.promptDiv.appendChild(no);
+        this.promptDiv.dataset.id = todoId;
+        this.promptDiv.classList.add('show');
+        overlay.classList.add('show');
+        return;
+      }
+    });
   }
 }
 
