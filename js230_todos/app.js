@@ -10,6 +10,7 @@ class App {
     this.todos = todos;
     this.todosDiv = document.querySelector('.todos');
     this.promptDiv = document.querySelector('.confirm_prompt');
+    this.contextMenuDiv = document.querySelector('.context_menu');
     this.overlayDiv = document.querySelector('.overlay');
 
     this.renderTodos();
@@ -37,6 +38,16 @@ class App {
     `;
   }
 
+  menuTemplate(todo) {
+    return `
+        <ul>
+          <li>Edit Todo</li>
+          <li>Show Details</li>
+          <li class="remove" data-id="${todo.id}">Delete</li>
+        </ul>
+    `;
+  }
+
   handleDeleteClick(event) {
     if(!event.target.classList.contains('remove')) return;
     let todoId = Number(event.target.closest('li').dataset.id);
@@ -46,7 +57,7 @@ class App {
 
   handleRightClick(event) {
     event.preventDefault();
-    alert('context menu');
+    this.showMenu(event.target);
   }
 
   handleConfirmClick(event) {
@@ -77,6 +88,11 @@ class App {
     this.promptDiv.innerHTML = '';
     this.promptDiv.classList.remove('show');
     this.overlayDiv.classList.remove('show');
+  }
+
+  showMenu(todo) {
+    this.contextMenuDiv.innerHTML = this.menuTemplate(todo);
+    this.contextMenuDiv.classList.add('show');
   }
 
   renderTodos() {
