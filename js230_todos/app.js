@@ -65,7 +65,11 @@ class App {
 
   handleMenuClick(event) {
     if(!event.target.classList.contains('remove')) return;
-    alert(event.target);
+    let todoId = Number(event.target.dataset.id);
+    let todo = todoItems.find(todo => todo.id === todoId);
+    this.hideMenu();
+    this.showPrompt(todo);
+    // alert(todo);
   }
 
   handleConfirmClick(event) {
@@ -101,6 +105,11 @@ class App {
   showMenu(todo) {
     this.contextMenuDiv.innerHTML = this.menuTemplate(todo);
     this.contextMenuDiv.classList.add('show');
+  }
+
+  hideMenu() {
+    this.contextMenuDiv.innerHTML = '';
+    this.contextMenuDiv.classList.remove('show');
   }
 
   renderTodos() {
