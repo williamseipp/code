@@ -58,7 +58,9 @@ class App {
 
   handleRightClick(event) {
     event.preventDefault();
-    this.showMenu(event.target);
+    let todoId = Number(event.target.closest('li').dataset.id);
+    let todo = todoItems.find(todo => todo.id === todoId);
+    this.showMenu(todo);
   }
 
   handleMenuClick(event) {
