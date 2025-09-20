@@ -19,6 +19,7 @@ class App {
     this.todosDiv.addEventListener('contextmenu', this.handleRightClick.bind(this));
     this.promptDiv.addEventListener('click', this.handleConfirmClick.bind(this));
     this.overlayDiv.addEventListener('click', this.handleOverlayClick.bind(this));
+    this.contextMenuDiv.addEventListener('click', this.handleMenuClick.bind(this));
   }
 
   deleteTodo(id) {
@@ -58,6 +59,11 @@ class App {
   handleRightClick(event) {
     event.preventDefault();
     this.showMenu(event.target);
+  }
+
+  handleMenuClick(event) {
+    if(!event.target.classList.contains('remove')) return;
+    alert(event.target);
   }
 
   handleConfirmClick(event) {
