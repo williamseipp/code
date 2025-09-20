@@ -69,7 +69,6 @@ class App {
     let todo = todoItems.find(todo => todo.id === todoId);
     this.hideMenu();
     this.showPrompt(todo);
-    // alert(todo);
   }
 
   handleConfirmClick(event) {
