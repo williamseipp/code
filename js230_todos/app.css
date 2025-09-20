@@ -25,6 +25,7 @@ h2 {
   border-radius: 5px;
   position: relative;
 }
+
 .confirm_prompt {
   display: none;
   width: 500px;
@@ -77,6 +78,38 @@ a.confirm_no {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.context_menu {
+  display: none;
+  position: fixed;
+  margin: 0;
+  width: 200px;
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.context_menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.context_menu li {
+  margin-left: 0;
+  height: 30px;
+  border-top: 1px solid #fff;
+  padding: 12px 0 0 10px;
+  cursor: pointer;
+}
+
+.context_menu li:hover {
+  background: #bbb;
+  color: #fff;
+}
+
+.context_menu li:first-child {
+  border-top: none;
+}
+
 .show {
   display: block;
 }
@@ -116,3 +149,4 @@ span.remove:after {
   bottom: 0;
   margin-left: -1px;
 }
+
