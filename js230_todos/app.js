@@ -20,6 +20,7 @@ class App {
     this.promptDiv.addEventListener('click', this.handleConfirmClick.bind(this));
     this.overlayDiv.addEventListener('click', this.handleOverlayClick.bind(this));
     this.contextMenuDiv.addEventListener('click', this.handleMenuClick.bind(this));
+    document.addEventListener('click', this.hideMenu.bind(this));
   }
 
   deleteTodo(id) {
