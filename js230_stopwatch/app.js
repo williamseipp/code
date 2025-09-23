@@ -58,6 +58,13 @@ class App {
     this.updateDisplay();
   }
 
+  resetTime() {
+    this.time.h = 0;
+    this.time.m = 0;
+    this.time.s = 0;
+    this.time.cs = 0;
+  }
+
   updateDisplay() {
     this.display.hours.textContent = String(this.time.h).padStart(2, '0');
     this.display.minutes.textContent = String(this.time.m).padStart(2, '0');
