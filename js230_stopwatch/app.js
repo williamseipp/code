@@ -12,7 +12,7 @@ class App {
       minutes: document.querySelector('.minutes'),
       seconds: document.querySelector('.seconds'),
       centiseconds: document.querySelector('.centiseconds'),
-    }
+    };
 
     this.elapsedMs = 0;
     this.isRunning = false;
@@ -49,15 +49,13 @@ class App {
 
   updateTime() {
     this.elapsedMs += 10;
-    let cs = Math.floor((this.elapsedMs % 1000) / 10);
-    let s = Math.floor((this.elapsedMs / 1000) % 60);
-    let m = Math.floor((this.elapsedMs / (60 * 1000)) % 60);
-    let h = Math.floor((this.elapsedMs / (60 * 60 * 1000)));
 
-    this.centiseconds.textContent = cs;
-    this.seconds.textContent = s;
-    this.minutes.textContent = m;
-    this.hours.textContent = h;
+    this.time.h = Math.floor((this.elapsedMs / (60 * 60 * 1000)));
+    this.time.m = Math.floor((this.elapsedMs / (60 * 1000)) % 60);
+    this.time.s = Math.floor((this.elapsedMs / 1000) % 60);
+    this.time.cs = Math.floor((this.elapsedMs % 1000) / 10);
+
+    this.updateDisplay();
   }
 
   updateDisplay() {
