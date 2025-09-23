@@ -59,10 +59,10 @@ class App {
   }
 
   updateDisplay() {
-    this.display.hours.textContent = this.time.h;
-    this.display.minutes.textContent = this.time.m;
-    this.display.seconds.textContent = this.time.s;
-    this.display.centiseconds.textContent = this.time.cs;
+    this.display.hours.textContent = String(this.time.h).padStart(2, '0');
+    this.display.minutes.textContent = String(this.time.m).padStart(2, '0');
+    this.display.seconds.textContent = String(this.time.s).padStart(2, '0');
+    this.display.centiseconds.textContent = String(this.time.cs).padStart(2, '0');
   }
 }
 
