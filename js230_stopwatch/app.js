@@ -37,13 +37,8 @@ class App {
   handleReset() {
     clearInterval(this.intervalId);
     this.isRunning = false;
-
-    this.elapsedMs = 0;
-    this.display.centiseconds.textContent = 0;
-    this.display.seconds.textContent = 0;
-    this.display.minutes.textContent = 0;
-    this.display.hours.textContent = 0;
-
+    this.resetTime();
+    this.updateDisplay();
     this.setToggleBtnText();
   }
 
