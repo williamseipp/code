@@ -6,10 +6,10 @@ class App {
     this.resetButton.addEventListener('click', this.handleReset.bind(this));
 
     this.display = {
-      centiseconds: document.querySelector('.centiseconds'),
-      seconds: document.querySelector('.seconds'),
-      minutes: document.querySelector('.minutes'),
       hours: document.querySelector('.hours'),
+      minutes: document.querySelector('.minutes'),
+      seconds: document.querySelector('.seconds'),
+      centiseconds: document.querySelector('.centiseconds'),
     }
 
     this.elapsedMs = 0;
