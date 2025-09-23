@@ -6,7 +6,7 @@ class App {
     this.seconds = document.querySelector('.seconds');
     this.minutes = document.querySelector('.minutes');
     this.hours = document.querySelector('.hours');
-    this.elapsed_time = null;
+    this.elapsedMs = 0;
     this.intervalId = null;
   }
 
@@ -22,12 +22,16 @@ class App {
   }
 
   updateTime() {
-    let elapsed_ms = this.elapsed_time.getTime() + 10;
-    this.elapsed_time = new Date(elapsed_ms);
-    this.centiseconds.textContent = this.elapsed_time.getUTCMilliseconds() / 10;
-    this.seconds.textContent = this.elapsed_time.getUTCSeconds();
-    this.minutes.textContent = this.elapsed_time.getUTCMinutes();
-    this.hours.textContent = this.elapsed_time.getUTCHours();
+    this.elapsedMs += 10;
+    let cs = Math.floor((this.elapsedMs % 1000) / 10);
+    let s = Math.floor((this.elapsedMs / 1000) % 60);
+    let m = Math.floor((this.elapsedMs / (60 * 1000)) % 60);
+    let h = Math.floor((this.elapsedMs / (60 * 60 * 1000)));
+
+    this.centiseconds.textContent = cs;
+    this.seconds.textContent = s;
+    this.minutes.textContent = m;
+    this.hours.textContent = h;
   }
 }
 
