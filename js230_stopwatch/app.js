@@ -14,7 +14,6 @@ class App {
     let text = event.target.textContent;
     if (text === 'Start') {
       this.toggleButton.textContent = 'Stop';
-      this.elapsed_time = new Date(0);
       this.intervalId = setInterval(this.updateTime.bind(this), 10);
     } else {
       this.toggleButton.textContent = 'Start';
