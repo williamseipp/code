@@ -17,6 +17,7 @@ class App {
       this.intervalId = setInterval(this.updateTime.bind(this), 10);
     } else {
       this.toggleButton.textContent = 'Start';
+      clearInterval(this.intervalId);
     }
   }
 
