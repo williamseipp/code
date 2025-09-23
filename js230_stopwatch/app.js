@@ -44,12 +44,10 @@ class App {
 
   updateTime() {
     this.elapsedMs += 10;
-
     this.time.h = Math.floor((this.elapsedMs / (60 * 60 * 1000)));
     this.time.m = Math.floor((this.elapsedMs / (60 * 1000)) % 60);
     this.time.s = Math.floor((this.elapsedMs / 1000) % 60);
     this.time.cs = Math.floor((this.elapsedMs % 1000) / 10);
-
     this.updateDisplay();
   }
 
