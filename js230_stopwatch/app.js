@@ -5,10 +5,13 @@ class App {
     this.resetButton = document.querySelector('.reset');
     this.resetButton.addEventListener('click', this.handleReset.bind(this));
 
-    this.centiseconds = document.querySelector('.centiseconds');
-    this.seconds = document.querySelector('.seconds');
-    this.minutes = document.querySelector('.minutes');
-    this.hours = document.querySelector('.hours');
+    this.display = {
+      centiseconds: document.querySelector('.centiseconds'),
+      seconds: document.querySelector('.seconds'),
+      minutes: document.querySelector('.minutes'),
+      hours: document.querySelector('.hours'),
+    }
+
     this.elapsedMs = 0;
     this.isRunning = false;
     this.intervalId = null;
@@ -34,10 +37,10 @@ class App {
     this.isRunning = false;
 
     this.elapsedMs = 0;
-    this.centiseconds.textContent = 0;
-    this.seconds.textContent = 0;
-    this.minutes.textContent = 0;
-    this.hours.textContent = 0;
+    this.display.centiseconds.textContent = 0;
+    this.display.seconds.textContent = 0;
+    this.display.minutes.textContent = 0;
+    this.display.hours.textContent = 0;
 
     this.setToggleBtnText();
   }
