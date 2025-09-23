@@ -5,6 +5,8 @@ class App {
     this.resetButton = document.querySelector('.reset');
     this.resetButton.addEventListener('click', this.handleReset.bind(this));
 
+    this.time = { h: 0, m: 0, s: 0, cs: 0 };
+
     this.display = {
       hours: document.querySelector('.hours'),
       minutes: document.querySelector('.minutes'),
