@@ -59,6 +59,7 @@ class App {
   }
 
   resetTime() {
+    this.elapsedMs = 0;
     this.time.h = 0;
     this.time.m = 0;
     this.time.s = 0;
