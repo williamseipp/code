@@ -2,6 +2,9 @@ class App {
   constructor() {
     this.toggleButton = document.querySelector('.toggle');
     this.toggleButton.addEventListener('click', this.handleToggle.bind(this));
+    this.resetButton = document.querySelector('.reset');
+    this.resetButton.addEventListener('click', this.handleReset.bind(this));
+
     this.centiseconds = document.querySelector('.centiseconds');
     this.seconds = document.querySelector('.seconds');
     this.minutes = document.querySelector('.minutes');
@@ -19,6 +22,18 @@ class App {
       this.toggleButton.textContent = 'Start';
       clearInterval(this.intervalId);
     }
+  }
+
+  handleReset() {
+    clearInterval(this.intervalId);
+
+    this.elapsedMs = 0;
+    this.centiseconds.textContent = 0;
+    this.seconds.textContent = 0;
+    this.minutes.textContent = 0;
+    this.hours.textContent = 0;
+
+    this.toggleButton.textContent = 'Start';
   }
 
   updateTime() {
