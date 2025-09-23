@@ -10,22 +10,28 @@ class App {
     this.minutes = document.querySelector('.minutes');
     this.hours = document.querySelector('.hours');
     this.elapsedMs = 0;
+    this.isRunning = false;
     this.intervalId = null;
   }
 
+  setToggleBtnText() {
+    this.toggleButton.textContent = this.isRunning ? 'Stop' : 'Start';
+  }
+
   handleToggle(event) {
-    let text = event.target.textContent;
-    if (text === 'Start') {
-      this.toggleButton.textContent = 'Stop';
+    this.isRunning = !this.isRunning;
+    this.setToggleBtnText();
+
+    if (this.isRunning) {
       this.intervalId = setInterval(this.updateTime.bind(this), 10);
     } else {
-      this.toggleButton.textContent = 'Start';
       clearInterval(this.intervalId);
     }
   }
 
   handleReset() {
     clearInterval(this.intervalId);
+    this.isRunning = false;
 
     this.elapsedMs = 0;
     this.centiseconds.textContent = 0;
@@ -33,7 +39,7 @@ class App {
     this.minutes.textContent = 0;
     this.hours.textContent = 0;
 
-    this.toggleButton.textContent = 'Start';
+    this.setToggleBtnText();
   }
 
   updateTime() {
