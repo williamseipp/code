@@ -59,6 +59,13 @@ class App {
     this.minutes.textContent = m;
     this.hours.textContent = h;
   }
+
+  updateDisplay() {
+    this.display.hours.textContent = this.time.h;
+    this.display.minutes.textContent = this.time.m;
+    this.display.seconds.textContent = this.time.s;
+    this.display.centiseconds.textContent = this.time.cs;
+  }
 }
 
 new App();
