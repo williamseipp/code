@@ -9,11 +9,11 @@ const cars = [
 ];
 
 class App {
- constructor() {
+  constructor() {
     this.filteredCars = cars;
     this.carsDiv = document.querySelector('.cars');
     this.renderCars();
- }
+  }
 }
 
 new App();
