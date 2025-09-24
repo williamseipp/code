@@ -10,38 +10,6 @@ const cars = [
 
 class App {
  constructor() {
-   this.cars = cars;
-   this.selectMake = document.querySelector("#make");
-   this.filterBtn = document.querySelector("#submit");
-
-   //additional code goes here
-
-   this.init();
- }
-
- populateDropdownOptions() {
- //STUB
- }
-
- handleFilterOptions(event) {
- //STUB
- }
-
- handleMakeChange(event) {
- //STUB
- }
-
- bindEvents() {
-   this.filterBtn.addEventListener(
-     "click",
-     this.handleFilterOptions.bind(this)
-   );
-   //other event listeners are registered here
- }
-
- init() {
-   //other calls go here
-   this.bindEvents();
  }
 }
 
