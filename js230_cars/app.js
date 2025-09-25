@@ -11,8 +11,12 @@ const cars = [
 class App {
   constructor() {
     this.filteredCars = cars;
+
     this.carsDiv = document.getElementById('cars');
+    this.filtersDiv = document.getElementById('filters');
+
     this.renderCars();
+    this.renderFilters();
   }
 
   renderCars() {
@@ -28,6 +32,44 @@ class App {
           </figure>
           <h2>${car.make} ${car.model}</h2>
           <p class="year">Year: ${car.year}</p>
+          <p class="price">Price: $${car.price}</p>
+          <a href="#">Buy</a>
+        </div>
+    `;
+  }
+
+  renderFilters() {
+    // this.filtersDiv.innerHTML = filterData.join("");
+    this.filtersDiv.innerHTML = `
+   <label for='make_select'>Make</label>
+   <select id='make_select' name='make'>
+     <option value="">Any</option>
+     <option value="Honda">Honda</option>
+     <option value="Toyota">Toyota</option>
+   </select>
+   <label for='model_select'>Model</label>
+   <select id='model_select' name='model'>
+     <option value="">Any</option>
+     <option value="A4">A4</option>
+     <option value="Camry">Camry</option>
+   </select>
+   <label for='price_select'>Price</label>
+   <select id='price_select' name='price'>
+     <option value="">Any</option>
+     <option value="7000">7000</option>
+     <option value="12000">12000</option>
+   </select>
+   <label for='year_select'>Year</label>
+   <select id='year_select' name='year'>
+     <option value="">Any</option>
+     <option value="2005">2005</option>
+     <option value="2011">2011</option>
+   </select>
+`
+  }
+
+  filterTemplate(filter) {
+    return `
           <p class="price">Price: $${car.price}</p>
           <a href="#">Buy</a>
         </div>
