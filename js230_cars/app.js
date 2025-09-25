@@ -11,8 +11,28 @@ const cars = [
 class App {
   constructor() {
     this.filteredCars = cars;
-    this.carsDiv = document.querySelector('.cars');
+    this.carsDiv = document.getElementById('cars');
     this.renderCars();
+  }
+
+  renderCars() {
+    let carData = this.filteredCars.map(car => this.carTemplate(car));
+    this.carsDiv.innerHTML = carData.join("");
+    alert(carData.join(""))
+  }
+
+  carTemplate(car) {
+    return `
+        <div class="car">
+          <figure>
+            <img src=${car.image}>
+          </figure>
+          <h2>${car.make} ${car.model}</h2>
+          <p class="year">Year: ${car.year}</p>
+          <p class="price">Price: $${car.price}</p>
+          <a href="#">Buy</a>
+        </div>
+    `;
   }
 }
 
