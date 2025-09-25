@@ -10,10 +10,12 @@ const cars = [
 
 class App {
   constructor() {
+    this.allCars = cars;
     this.filteredCars = cars;
 
     this.carsDiv = document.getElementById('cars');
     this.filtersDiv = document.getElementById('filters');
+    this.filters = this.generateFilters();
 
     this.renderCars();
     this.renderFilters();
@@ -36,6 +38,15 @@ class App {
           <a href="#">Buy</a>
         </div>
     `;
+  }
+
+  generateFilters() {
+    let make = [...new Set(this.allCars.map(car => car.make))];
+    let model = [...new Set(this.allCars.map(car => car.model))];
+    let price = [...new Set(this.allCars.map(car => car.price))];
+    let year = [...new Set(this.allCars.map(car => car.year))];
+
+    return { make, model, price, year };
   }
 
   renderFilters() {
