@@ -18,7 +18,6 @@ class App {
   renderCars() {
     let carData = this.filteredCars.map(car => this.carTemplate(car));
     this.carsDiv.innerHTML = carData.join("");
-    alert(carData.join(""))
   }
 
   carTemplate(car) {
