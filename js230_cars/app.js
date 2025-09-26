@@ -18,7 +18,7 @@ class App {
     this.filters = this.generateFilters();
 
     this.renderCars();
-    this.renderFilters();
+    this.renderFilterMenu();
   }
 
   renderCars() {
@@ -49,7 +49,7 @@ class App {
     return { make, model, price, year };
   }
 
-  renderFilters() {
+  renderFilterMenu() {
     this.filtersDiv.innerHTML = this.filterTemplate();
   }
 
