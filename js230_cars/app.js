@@ -53,33 +53,24 @@ class App {
     this.filtersDiv.innerHTML = this.filterTemplate();
   }
 
-  filterTemplate(filter) {
-    return `
-       <label for='make_select'>Make</label>
-       <select id='make_select' name='make'>
-         <option value="">Any</option>
-         <option value="Honda">Honda</option>
-         <option value="Toyota">Toyota</option>
-       </select>
-       <label for='model_select'>Model</label>
-       <select id='model_select' name='model'>
-         <option value="">Any</option>
-         <option value="A4">A4</option>
-         <option value="Camry">Camry</option>
-       </select>
-       <label for='price_select'>Price</label>
-       <select id='price_select' name='price'>
-         <option value="">Any</option>
-         <option value="7000">7000</option>
-         <option value="12000">12000</option>
-       </select>
-       <label for='year_select'>Year</label>
-       <select id='year_select' name='year'>
-         <option value="">Any</option>
-         <option value="2005">2005</option>
-         <option value="2011">2011</option>
-       </select>
-    `;
+  filterTemplate() {
+    let filterHTML = Object.entries(this.filters)
+      .map(([key, values]) => {
+
+      let labelHTML = `<label for="${key}_select">${key.charAt(0).toUpperCase() + key.slice(1)}<label>`;
+
+      let selectHTML = `<select id=${key}_select name='${key}'>`
+
+      let optionHTML = `<option value="">Any</option>`
+        + values.map(value => `<option value='${value}'>${value}</option>`).join('');
+
+      let closingHTML = '</select>'
+
+      return labelHTML + selectHTML + optionHTML + closingHTML;
+
+    }).join('');
+
+    return filterHTML;
   }
 }
 
