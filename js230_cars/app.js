@@ -70,7 +70,7 @@ class App {
 
     }).join('');
 
-    return filterHTML;
+    return filterHTML + '<button class="filter_btn">Filter</button>';
   }
 }
 
