@@ -16,6 +16,12 @@ class App {
     this.carsDiv = document.getElementById('cars');
     this.filtersDiv = document.getElementById('filters');
     this.filters = this.generateFilters();
+    this.filterState = {
+      make: '',
+      model: '',
+      price: '',
+      year: '',
+    }
 
     this.renderCars();
     this.renderFilterMenu();
@@ -76,14 +82,16 @@ class App {
   }
 
   handleFilterClick(event) {
-    const filterState = {
-      make: this.filtersDiv.querySelector('select[name="make"]').value,
-      model: this.filtersDiv.querySelector('select[name="model"]').value,
-      price: this.filtersDiv.querySelector('select[name="price"]').value,
-      year: this.filtersDiv.querySelector('select[name="year"]').value
-    }
+    this.setFilterState();
 
-    alert(JSON.stringify(filterState, null, 2));
+    alert(JSON.stringify(this.filterState, null, 2));
+  }
+
+  setFilterState() {
+    this.filterState.make = this.filtersDiv.querySelector('select[name="make"]').value,
+    this.filterState.model = this.filtersDiv.querySelector('select[name="model"]').value,
+    this.filterState.price = this.filtersDiv.querySelector('select[name="price"]').value,
+    this.filterState.year = this.filtersDiv.querySelector('select[name="year"]').value
   }
 }
 
