@@ -20,9 +20,7 @@ class App {
     this.renderCars();
     this.renderFilterMenu();
 
-    document.querySelector('.filter_btn').addEventListener('click', event => {
-      alert('hey');
-    })
+    document.querySelector('.filter_btn').addEventListener('click', this.handleFilterClick.bind(this));
   }
 
   renderCars() {
@@ -75,6 +73,10 @@ class App {
     }).join('');
 
     return filterHTML + '<button class="filter_btn">Filter</button>';
+  }
+
+  handleFilterClick(event) {
+    alert('hey');
   }
 }
 
