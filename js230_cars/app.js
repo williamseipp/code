@@ -76,7 +76,14 @@ class App {
   }
 
   handleFilterClick(event) {
-    alert('hey');
+    const filterState = {
+      make: this.filtersDiv.querySelector('select[name="make"]').value,
+      model: this.filtersDiv.querySelector('select[name="model"]').value,
+      price: this.filtersDiv.querySelector('select[name="price"]').value,
+      year: this.filtersDiv.querySelector('select[name="year"]').value
+    }
+
+    alert(JSON.stringify(filterState, null, 2));
   }
 }
 
