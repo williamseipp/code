@@ -19,6 +19,10 @@ class App {
 
     this.renderCars();
     this.renderFilterMenu();
+
+    document.querySelector('.filter_btn').addEventListener('click', event => {
+      alert('hey');
+    })
   }
 
   renderCars() {
