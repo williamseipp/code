@@ -104,9 +104,11 @@ class App {
     // // Go through all cars and return those that match ALL active filter fields
     this.filteredCars = this.allCars.filter(car =>
       // Check if every active filter key matches between car and filterState
-      activeFilterKeys.every(
-        key => car[key] === this.filterState[key]
-      )
+      activeFilterKeys.every(key => {
+        let carValue = String(car[key]); 
+        let filterValue = this.filterState[key];
+        return carValue === filterValue;
+      })
     );
   }
 }
