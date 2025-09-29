@@ -27,6 +27,12 @@ class App {
     this.renderFilterMenu();
 
     document.querySelector('.filter_btn').addEventListener('click', this.handleFilterClick.bind(this));
+
+    this.filtersDiv.querySelector('#make_select').addEventListener('click', this.handleMakeSelect.bind(this));
+  }
+
+  handleMakeSelect() {
+    alert('want to make a change?')
   }
 
   renderCars() {
