@@ -34,7 +34,7 @@ class App {
   handleMakeSelect() {
     // read the value of the car make
     const make = this.filtersDiv.querySelector('select[name="make"]').value;
-    alert(make)
+    this.renderModelDropdown(make);
   }
 
   renderCars() {
@@ -67,6 +67,17 @@ class App {
 
   renderFilterMenu() {
     this.filtersDiv.innerHTML = this.filterTemplate();
+  }
+
+  renderModelDropdown(make) {
+    let filteredMakes = this.allCars.filter(car => car.make === make);
+    let model = [...new Set(filteredMakes.map(car => car.model))];
+    let modelDiv = document.querySelector('#model_select');
+
+    let optionHTML = `<option value="">Any</option>`
+      + model.map(model => `<option value='${model}'>${model}</option>`).join('');
+
+    modelDiv.innerHTML = optionHTML; 
   }
 
   filterTemplate() {
