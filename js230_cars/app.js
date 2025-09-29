@@ -32,7 +32,9 @@ class App {
   }
 
   handleMakeSelect() {
-    alert('want to make a change?')
+    // read the value of the car make
+    const make = this.filtersDiv.querySelector('select[name="make"]').value;
+    alert(make)
   }
 
   renderCars() {
