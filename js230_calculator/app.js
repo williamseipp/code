@@ -21,6 +21,10 @@ class App {
     const newValue = this.calculator.inputDigit(num);
     this.result.textContent = newValue;
   }
+
+  updateExpressionDisplay(expression) {
+    this.expressionDisplay.textContent = expression;
+  }
 }
 
 class Calculator {
