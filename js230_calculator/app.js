@@ -12,14 +12,14 @@ class App {
   onButtonClick(event) {
     if(event.target.className === 'digit') {
       const num = event.target.textContent;
-      this.updateResult(num);
+      this.updateResultDisplay(num);
     }
   }
 
   // change DOM
   updateResultDisplay(num) {
     const newValue = this.calculator.inputDigit(num);
-    this.result.textContent = newValue;
+    this.resultDisplay.textContent = newValue;
   }
 
   updateExpressionDisplay(expression) {
