@@ -1,23 +1,23 @@
 class App {
   constructor() {
     this.calculator = new Calculator();
-    document.querySelector('#buttons').addEventListener('click', this.pressButton.bind(this));
-    this.expression = document.querySelector('.calculation');
-    this.result = document.querySelector('.current_num');
+
+    this.expressionDisplay = document.querySelector('.calculation');
+    this.resultDisplay = document.querySelector('.current_num');
+
+    document.querySelector('#buttons').addEventListener('click', this.onButtonClick.bind(this));
   }
 
-  pressButton(event) {
+  // responds to user action
+  onButtonClick(event) {
     if(event.target.className === 'digit') {
       const num = event.target.textContent;
       this.updateResult(num);
     }
   }
 
-  emptyExpression() {
-    return this.expression.textContent === '';
-  }
-
-  updateResult(num) {
+  // change DOM
+  updateResultDisplay(num) {
     const newValue = this.calculator.inputDigit(num);
     this.result.textContent = newValue;
   }
