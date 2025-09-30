@@ -6,7 +6,22 @@ class App {
   }
 
   pressButton(event) {
-    alert(event.target.classList);
+    let num = event.target.textContent;
+    if(event.target.className === 'digit' && this.emptyExpression()) {
+      this.updateResult(num);
+    }
+  }
+
+  emptyExpression() {
+    return this.expression.textContent === '';
+  }
+
+  updateResult(num) {
+    if (this.result.textContent === '0') {
+      this.result.textContent = num;
+    } else {
+      this.result.textContent += num;
+    }
   }
 }
 
