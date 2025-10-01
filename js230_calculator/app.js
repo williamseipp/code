@@ -28,13 +28,14 @@ class App {
 
   // updates DOM to match calculator expression state
   updateExpressionDisplay(expression) {
-    this.expressionDisplay.textContent = expression;
+    this.expressionDisplay.textContent = this.calculator.expression;
   }
 }
 
 class Calculator {
   constructor() {
     this.inputBuffer = '0';
+    this.expression = '';
   }
 
   inputDigit(num) {
