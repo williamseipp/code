@@ -18,14 +18,12 @@ class App {
 
     if(btnType === 'digit') {
       this.calculator.inputDigit(btnValue);
-      this.updateResultDisplay();
     } else if(btnType === 'dot') {
       this.calculator.inputDecimal();
-      this.updateResultDisplay();
     } else if(btnId === 'ce') {
       this.calculator.clearInputBuffer();
-      this.updateResultDisplay();
     }
+    this.updateResultDisplay();
   }
 
   // updates DOM to match calculator input buffer state
