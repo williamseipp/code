@@ -21,11 +21,12 @@ class App {
     }
   }
 
-  // should read calculator's current state and update the DOM to match it
+  // updates DOM to match calculator input buffer state
   updateResultDisplay(num) {
     this.resultDisplay.textContent = this.calculator.inputBuffer;
   }
 
+  // updates DOM to match calculator expression state
   updateExpressionDisplay(expression) {
     this.expressionDisplay.textContent = expression;
   }
