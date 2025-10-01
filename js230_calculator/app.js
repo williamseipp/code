@@ -18,6 +18,9 @@ class App {
     if(btnType === 'digit') {
       this.calculator.inputDigit(btnValue);
       this.updateResultDisplay();
+    } else if(btnType === 'dot') {
+      this.calculator.inputDecimal();
+      this.updateResultDisplay();
     }
   }
 
@@ -44,6 +47,11 @@ class Calculator {
     } else {
       this.inputBuffer += num;
     }
+  }
+
+  inputDecimal() {
+    if(this.inputBuffer.includes('.')) return;
+    this.inputBuffer += '.';
   }
 }
 
