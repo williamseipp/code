@@ -31,6 +31,7 @@ class App {
       this.calculator.addOperator(btnValue);
     }
     this.updateResultDisplay();
+    this.updateExpressionDisplay();
   }
 
   // updates DOM to match calculator input buffer state
