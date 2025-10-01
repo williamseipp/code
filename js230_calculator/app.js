@@ -22,6 +22,9 @@ class App {
       this.calculator.inputDecimal();
     } else if(btnId === 'ce') {
       this.calculator.clearInputBuffer();
+    } else if(btnId === 'c') {
+      this.calculator.clearInputBuffer();
+      this.calculator.clearExpression();
     }
     this.updateResultDisplay();
   }
@@ -58,6 +61,10 @@ class Calculator {
 
   clearInputBuffer() {
     this.inputBuffer = '0';
+  }
+
+  clearExpression() {
+    this.expression = '';
   }
 }
 
