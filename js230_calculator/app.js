@@ -10,8 +10,10 @@ class App {
 
   // responds to user action
   onButtonClick(event) {
-    const btnType = event.target.className;
-    const btnValue = event.target.textContent;
+    const button = event.target.closest('button')
+    if (!button) return;
+    const btnType = button.className;
+    const btnValue = button.textContent;
 
     if(btnType === 'digit') {
       this.updateResultDisplay(btnValue);
