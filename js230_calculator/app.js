@@ -35,7 +35,7 @@ class App {
 class Calculator {
   constructor() {
     this.inputBuffer = '0';
-    this.expression = [];
+    this.expression = '';
   }
 
   inputDigit(num) {
