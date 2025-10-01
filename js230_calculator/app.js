@@ -28,7 +28,6 @@ class App {
     } else if(btnId === 'neg') {
       this.calculator.negateInput();
     } else if(btnType === 'op') {
-      alert('yo')
       this.calculator.addOperator(btnValue);
     }
     this.updateResultDisplay();
