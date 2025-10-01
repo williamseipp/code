@@ -27,6 +27,9 @@ class App {
       this.calculator.clearExpression();
     } else if(btnId === 'neg') {
       this.calculator.negateInput();
+    } else if(btnType === 'op') {
+      alert('yo')
+      this.calculator.addOperator(btnValue);
     }
     this.updateResultDisplay();
   }
@@ -75,6 +78,11 @@ class Calculator {
     } else {
       this.inputBuffer = '-' + this.inputBuffer;
     }
+  }
+
+  addOperator(opString) {
+    this.expression += this.inputBuffer + opString;
+    this.clearInputBuffer();
   }
 }
 
