@@ -8,22 +8,22 @@ class App {
     document.querySelector('#buttons').addEventListener('click', this.onButtonClick.bind(this));
   }
 
-  // responds to user action
+  // decides what kind of button was pressed and route it
   onButtonClick(event) {
-    const button = event.target.closest('button')
+    const button = event.target.closest('a')
     if (!button) return;
     const btnType = button.className;
     const btnValue = button.textContent;
 
     if(btnType === 'digit') {
-      this.updateResultDisplay(btnValue);
+      this.calculator.inputDigit(btnValue);
+      this.updateResultDisplay();
     }
   }
 
-  // change DOM
+  // should read calculator's current state and update the DOM to match it
   updateResultDisplay(num) {
-    const newValue = this.calculator.inputDigit(num);
-    this.resultDisplay.textContent = newValue;
+    this.resultDisplay.textContent = this.calculator.inputBuffer;
   }
 
   updateExpressionDisplay(expression) {
@@ -33,16 +33,15 @@ class App {
 
 class Calculator {
   constructor() {
-    this.currentValue = '0';
+    this.inputBuffer = '0';
   }
 
   inputDigit(num) {
-    if (this.currentValue === '0') {
-      this.currentValue = num;
+    if (this.inputBuffer === '0') {
+      this.inputBuffer = num;
     } else {
-      this.currentValue += num;
+      this.inputBuffer += num;
     }
-    return this.currentValue;
   }
 }
 
