@@ -14,12 +14,16 @@ class App {
     if (!button) return;
     const btnType = button.className;
     const btnValue = button.textContent;
+    const btnId = button.id;
 
     if(btnType === 'digit') {
       this.calculator.inputDigit(btnValue);
       this.updateResultDisplay();
     } else if(btnType === 'dot') {
       this.calculator.inputDecimal();
+      this.updateResultDisplay();
+    } else if(btnId === 'ce') {
+      this.calculator.clearInputBuffer();
       this.updateResultDisplay();
     }
   }
@@ -52,6 +56,10 @@ class Calculator {
   inputDecimal() {
     if(this.inputBuffer.includes('.')) return;
     this.inputBuffer += '.';
+  }
+
+  clearInputBuffer() {
+    this.inputBuffer = '0';
   }
 }
 
