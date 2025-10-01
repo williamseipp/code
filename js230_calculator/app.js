@@ -25,6 +25,8 @@ class App {
     } else if(btnId === 'c') {
       this.calculator.clearInputBuffer();
       this.calculator.clearExpression();
+    } else if(btnId === 'neg') {
+      this.calculator.negateInput();
     }
     this.updateResultDisplay();
   }
@@ -65,6 +67,14 @@ class Calculator {
 
   clearExpression() {
     this.expression = '';
+  }
+
+  negateInput() {
+    if(this.inputBuffer.includes('-')) {
+      this.inputBuffer = this.inputBuffer.slice(1);
+    } else {
+      this.inputBuffer = '-' + this.inputBuffer;
+    }
   }
 }
 
