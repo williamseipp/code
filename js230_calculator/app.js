@@ -10,9 +10,11 @@ class App {
 
   // responds to user action
   onButtonClick(event) {
-    if(event.target.className === 'digit') {
-      const num = event.target.textContent;
-      this.updateResultDisplay(num);
+    const btnType = event.target.className;
+    const btnValue = event.target.textContent;
+
+    if(btnType === 'digit') {
+      this.updateResultDisplay(btnValue);
     }
   }
 
