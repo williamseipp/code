@@ -10,6 +10,7 @@ const Autocomplete = {
     if (value.length > 0) {
       this.matches = await this.fetchMatches(value);
       this.visible = true;
+      this.bestMatchIndex = 0;
       this.draw();
     } else {
       this.reset();
@@ -26,6 +27,13 @@ const Autocomplete = {
       this.overlay.textContent = '';
       return;
     }
+    // render the best country inside the input overlay
+    if (this.bestMatchIndex !== null && this.matches.length !== 0) {
+      let selected = this.matches[this.bestMatchIndex];
+      this.overlay.textContent = this.generateOverlayContent(this.input.value, selected);
+    } else {
+      this.overlay.textContent = '';
+    }
     // render the server data
     this.matches.forEach(match => {
       let li = document.createElement('li');
@@ -36,10 +44,16 @@ const Autocomplete = {
     });
   },
 
+  generateOverlayContent: function(value, match) {
+    let end = match.name.slice(value.length);
+    return value + end;
+  },
 
   reset: function() {
     this.visible = false;
     this.matches = [];
+    this.bestMatchIndex = null;
+    this.selectedIndex = null;
 
     this.draw();
   },
@@ -80,6 +94,11 @@ const Autocomplete = {
 
     this.visible = false;
     this.matches = [];
+    // going up and down the list
+    // kass
+    //https://launchschool.com/lessons/1b723bd0/assignments/d9af6b23
+    this.bestMatchIndex = null;
+    this.selectedIndex = null;
 
     this.wrapInput();
     this.createUI();
