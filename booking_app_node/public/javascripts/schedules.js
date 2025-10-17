@@ -1,5 +1,17 @@
 async function fetchWithTimeout() {
-  alert(`api/schedules is the endpoint`)
+  let url = 'api/schedules';
+  let response = await fetch(url);
+  let json = await response.json();
+  const tally = {};
+
+  json.forEach(schedule => {
+    tally[schedule.staff_id] ?
+      tally[schedule.staff_id]++ : tally[schedule.staff_id] = 1;
+  })
+
+  Object.keys(tally).forEach(key => {
+    alert(`staff ${key}: schedules: ${tally[key]}`);
+  });
 }
 
 function main() {
