@@ -16,14 +16,15 @@ async function fetchWithTimeout() {
     } else {
       const tally = {};
 
-      json.forEach(schedule => {
-        tally[schedule.staff_id] ?
-          tally[schedule.staff_id]++ : tally[schedule.staff_id] = 1;
-      })
-
-      Object.keys(tally).forEach(key => {
-        alert(`staff ${key}: schedules: ${tally[key]}`);
+      json.forEach(({ staff_id }) => {
+        tally[staff_id] = (tally[staff_id] || 0) + 1;
       });
+
+      const message = Object.keys(tally)
+        .map(id => `staff ${id}: ${tally[id]}`)
+        .join('\n');
+
+      alert(message);
     }
   } catch (error) {
     alert(error.message);
