@@ -1,8 +1,26 @@
-<!-- On submit, prevent default, gather form data, send a POST to /api/staff_members as JSON with Content-Type: application/json. -->
+<!-- On submit, 
+Handle server responses 
+  201: parse JSON, 
+       alert success and 
+       reset; 
 
-<!-- Handle server responses (201: parse JSON, alert success and reset; 400: read text, alert the message). -->
+  400: read text, alert the message).
 
-<!-- The UI doesn’t need to be fancy here; the goal is practicing the fetch flow and response handling. If you want, name it something like add_staff.html and keep it isolated from other parts of the app while you work. -->
+400
+     when you have no email or name provided:
+     localhost:3000 says 
+     Staff cannot be created. Check your inputs 
+
+400
+     when you have an email but no name provided:
+     localhost:3000 says 
+     Staff cannot be created. Check your inputs 
+
+201
+     when you have an email and a name provided:
+     localhost:3000 says 
+     Successfully created staff with id: 14
+-->
 
 <!doctype html>
 <html lang="en-US">
@@ -58,6 +76,6 @@
       </dl>
       <input type="submit">
     </form>
-    <script src="javascripts/addingStaff.js"></script>
+    <script src="javascripts/addStaff.js"></script>
   </body>
 </html>
